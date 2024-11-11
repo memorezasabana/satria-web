@@ -6,9 +6,11 @@
     <title>
         Satria
     </title>
+    <link rel="icon" href="img/logo-only.svg" type="image/x-icon">
     <script src="https://cdn.tailwindcss.com">
     </script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Product+Sans:wght@400;600&display=swap" rel="stylesheet" />
@@ -67,103 +69,197 @@
                 }
             }
         }
-    </style>
-    <script>
-        function updateJamSalamTanggal() {
-            const jamElement = document.getElementById("jam");
-            const salamElement = document.getElementById("salam");
-            const tanggalElement = document.getElementById("tanggal");
-            const waktuSekarang = new Date();
 
-            // Mendapatkan jam, menit, dan detik
-            let jam = waktuSekarang.getHours();
-            let menit = waktuSekarang.getMinutes();
-            let detik = waktuSekarang.getSeconds();
-
-            // Mendapatkan tanggal, bulan, dan tahun
-            const hari = waktuSekarang.getDate();
-            const bulan = waktuSekarang.getMonth();
-            const tahun = waktuSekarang.getFullYear();
-
-            // Format untuk menambahkan angka 0 di depan jika < 10
-            jam = jam < 10 ? "0" + jam : jam;
-            menit = menit < 10 ? "0" + menit : menit;
-            detik = detik < 10 ? "0" + detik : detik;
-
-            // Mengupdate teks pada elemen HTML untuk jam
-            jamElement.textContent = `${jam}:${menit}:${detik}`;
-
-            // Menentukan salam berdasarkan jam
-            let salam;
-            if (jam >= 5 && jam < 12) {
-                salam = "Selamat Pagi";
-            } else if (jam >= 12 && jam < 15) {
-                salam = "Selamat Siang";
-            } else if (jam >= 15 && jam < 18) {
-                salam = "Selamat Sore";
-            } else {
-                salam = "Selamat Malam";
-            }
-
-            // Mengupdate teks salam
-            salamElement.textContent = salam;
-
-            // Nama-nama bulan
-            const namaBulan = [
-                "Januari", "Februari", "Maret", "April", "Mei", "Juni",
-                "Juli", "Agustus", "September", "Oktober", "November", "Desember"
-            ];
-
-            // Mengupdate teks pada elemen HTML untuk tanggal
-            const tanggal = `${hari} ${namaBulan[bulan]} ${tahun}`;
-            tanggalElement.textContent = tanggal;
+        ::-webkit-scrollbar {
+            width: 12px;
+            height: 12px;
         }
 
-        // Memanggil fungsi updateJamSalamTanggal setiap 1 detik
-        setInterval(updateJamSalamTanggal, 1000);
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
 
-        // Memanggil sekali saat pertama kali untuk menghindari delay
-        updateJamSalamTanggal();
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(to right, #e40028, #ff4364, #da3c58);
+            border-radius: 10px;
+        }
 
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(to right, #ff4364, #e40028);
+        }
 
-        // Data untuk chart
-        const data = {
-            labels: ['2020', '2021', '2022', '2023', '2024'], // Tahun
-            datasets: [{
-                label: 'Jumlah Kejadian Bencana',
-                data: [60, 54, 48, 42, 36], // Data untuk masing-masing tahun
-                backgroundColor: '#d8042a', // Warna grafik
-                borderColor: '#d8042a',
-                borderWidth: 1
-            }]
-        };
+        /* Animasi melayang untuk emoji 📩 */
+        @keyframes floatAnimation {
 
-        const config = {
-            type: 'bar', // Jenis chart (bar chart)
-            data: data,
-            options: {
-                responsive: true,
-                scales: {
-                    x: {
-                        beginAtZero: true
-                    },
-                    y: {
-                        beginAtZero: true
-                    }
-                }
+            0%,
+            100% {
+                transform: translateY(0px) rotate(-5.55deg);
             }
-        };
 
-        // Membuat chart di elemen canvas
-        const ctx = document.getElementById('bencanaChart').getContext('2d');
-        new Chart(ctx, config);
+            50% {
+                transform: translateY(-10px) rotate(-5.55deg);
+            }
+        }
 
+        /* Animasi bergoyang untuk emoji ☎️ */
+        @keyframes wobbleAnimation {
 
+            0%,
+            100% {
+                transform: rotate(0deg);
+            }
 
-    </script>
+            25% {
+                transform: rotate(10deg);
+            }
 
+            75% {
+                transform: rotate(-10deg);
+            }
+        }
 
+        /* Terapkan animasi pada elemen */
+        .emoji-email {
+            animation: floatAnimation 2s ease-in-out infinite;
+        }
 
+        .emoji-phone {
+            animation: wobbleAnimation 1.5s ease-in-out infinite;
+        }
+
+        /* Animasi Melambai untuk Emoji 🙋🏻‍♂️ */
+        @keyframes waveAnimation {
+
+            0%,
+            100% {
+                transform: rotate(0deg);
+            }
+
+            25% {
+                transform: rotate(10deg);
+            }
+
+            50% {
+                transform: rotate(-10deg);
+            }
+
+            75% {
+                transform: rotate(10deg);
+            }
+        }
+
+        /* Animasi Zoom In/Out untuk Emoji 🔎 */
+        @keyframes zoomAnimation {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.2);
+            }
+        }
+
+        /* Terapkan animasi pada elemen */
+        .emoji-wave {
+            animation: waveAnimation 1.5s ease-in-out infinite;
+        }
+
+        .emoji-zoom {
+            animation: zoomAnimation 2s ease-in-out infinite;
+        }
+
+        /* Animasi Bendera Berkibar */
+        @keyframes flagWave {
+
+            0%,
+            100% {
+                transform: rotate(8deg);
+            }
+
+            50% {
+                transform: rotate(15deg);
+            }
+        }
+
+        .emoji-flag {
+            animation: flagWave 1.5s ease-in-out infinite;
+        }
+
+        /* Animasi Melompat untuk Pin Lokasi */
+        @keyframes bounce {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .emoji-pin {
+            animation: bounce 1.2s ease-in-out infinite;
+        }
+
+        /* Animasi Muncul untuk Rumah */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .emoji-house {
+            animation: fadeIn 1.5s ease forwards;
+        }
+
+        /* Animasi Bergoyang untuk Tanda Konstruksi 🚧 */
+        @keyframes sway {
+
+            0%,
+            100% {
+                transform: rotate(0deg);
+            }
+
+            25% {
+                transform: rotate(-5deg);
+            }
+
+            75% {
+                transform: rotate(5deg);
+            }
+        }
+
+        .emoji-construction {
+            animation: sway 1.5s ease-in-out infinite;
+        }
+
+        /* Animasi Maju-Mundur untuk Mobil 🚘 */
+        @keyframes moveCar {
+
+            0%,
+            100% {
+                transform: translateX(0);
+            }
+
+            50% {
+                transform: translateX(-10px);
+            }
+        }
+
+        .emoji-car {
+            animation: moveCar 1.2s ease-in-out infinite;
+        }
+    </style>
 
 </head>
 
@@ -245,10 +341,10 @@
         <div class="self-stretch justify-start items-center gap-7 inline-flex">
             <div
                 class="w-[142px] h-[195.40px] py-5 bg-white rounded-xl flex-col justify-center items-center inline-flex">
-                <div class="w-[70px] h-[70px] relative">
-                    <div class="w-[42.61px] h-[42.61px] left-[13.70px] top-[16px]">
+                <div class="h-[84px] justify-start items-center gap-2.5 inline-flex">
+                    <div class="w-[84px] h-[60.34px] relative flex justify-center items-center">
+                        <img class="w-[60px] h-[60px]" src="img/icon-sun.svg" />
                     </div>
-                    <img class="w-[60px] h-[60px] left-0 top-[3px] absolute" src="img/icon-sun.svg" />
                 </div>
                 <div class="text-[#000e6e] text-2xl font-normal font-['Product Sans'] leading-9 tracking-wide">Hari
                     Ini</div>
@@ -258,8 +354,8 @@
             <div
                 class="w-[142px] h-[195.40px] py-5 bg-white/10 rounded-xl flex-col justify-center items-center inline-flex">
                 <div class="h-[84px] justify-start items-center gap-2.5 inline-flex">
-                    <div class="w-[84px] h-[60.34px] relative">
-                        <img class="w-[70px] h-[70px] left-0 top-0 absolute" src="img/icon-partlycloudy.png" />
+                    <div class="w-[84px] h-[60.34px] relative flex justify-center items-center">
+                        <img class="w-[70px] h-[70px]" src="img/icon-partlycloudy.png" />
                     </div>
                 </div>
                 <div class="text-white text-2xl font-normal font-['Product Sans'] leading-9 tracking-wide">Kamis
@@ -270,8 +366,8 @@
             <div
                 class="w-[142px] h-[195.40px] py-5 bg-white/10 rounded-xl flex-col justify-center items-center inline-flex">
                 <div class="h-[84px] justify-start items-center gap-2.5 inline-flex">
-                    <div class="w-[84px] h-[60.34px] relative">
-                        <img class="w-[70px] h-[70px] left-0 top-0 absolute" src="img/icon-cloudy.png" />
+                    <div class="w-[84px] h-[60.34px] relative flex justify-center items-center">
+                        <img class="w-[70px] h-[70px]" src="img/icon-cloudy.png" />
                     </div>
                 </div>
                 <div class="text-white text-2xl font-normal font-['Product Sans'] leading-9 tracking-wide">Jumat
@@ -282,8 +378,8 @@
             <div
                 class="w-[142px] h-[195.40px] py-5 bg-white/10 rounded-xl flex-col justify-center items-center inline-flex">
                 <div class="h-[84px] justify-start items-center gap-2.5 inline-flex">
-                    <div class="w-[84px] h-[60.34px] relative">
-                        <img class="w-[70px] h-[70px] left-0 top-0 absolute" src="img/icon-partlycloudy.png" />
+                    <div class="w-[84px] h-[60.34px] relative flex justify-center items-center">
+                        <img class="w-[70px] h-[70px]" src="img/icon-partlycloudy.png" />
                     </div>
                 </div>
                 <div class="text-white text-2xl font-normal font-['Product Sans'] leading-9 tracking-wide">Sabtu
@@ -294,10 +390,8 @@
             <div
                 class="w-[142px] h-[195.40px] py-5 bg-white/10 rounded-xl flex-col justify-center items-center inline-flex">
                 <div class="h-[84px] justify-start items-center gap-2.5 inline-flex">
-                    <div class="w-[84px] h-[72px] relative">
-                        <div class="w-[84px] h-[56px] relative ">
-                            <img class="w-[70px] h-[70px] left-0 top-0 absolute" src="img/icon-lightrain.png" />
-                        </div>
+                    <div class="w-[84px] h-[60.34px] relative flex justify-center items-center">
+                        <img class="w-[70px] h-[70px]" src="img/icon-lightrain.png" />
                     </div>
                 </div>
                 <div class="text-white text-2xl font-normal font-['Product Sans'] leading-9 tracking-wide">Minggu
@@ -320,10 +414,8 @@
             <div
                 class="w-[142px] h-[195.40px] py-5 bg-white/10 rounded-xl flex-col justify-center items-center inline-flex">
                 <div class="h-[84px] justify-start items-center gap-2.5 inline-flex">
-                    <div class="w-[84px] h-[60.34px] relative">
-                        <div class="w-[84px] h-[60.34px] relative">
-                            <img class="w-[70px] h-[70px] left-0 top-0 absolute" src="img/icon-partlycloudy.png" />
-                        </div>
+                    <div class="w-[84px] h-[60.34px] relative flex justify-center items-center">
+                        <img class="w-[60px] h-[60px]" src="img/icon-partlycloudy.png" />
                     </div>
                 </div>
                 <div class="text-white text-2xl font-normal font-['Product Sans'] leading-9 tracking-wide">Selasa
@@ -346,7 +438,7 @@
                         class="text-[#d8042a] text-[32px] font-medium font-['Product Sans Medium'] leading-[48px] tracking-wide">
                         Peringatan: Kebakaran di Jl. Gubernur Suryo</div>
                     <div
-                        class="p-2.5 bg-gradient-to-r from-red-500 to-red-700 rounded-lg justify-center items-center gap-2.5 flex group hover:bg-gradient-to-r hover:from-red-600 hover:to-red-800 transition-all duration-300">
+                        class="p-2.5 bg-gradient-to-r from-red-500 to-red-700 rounded-lg justify-center items-center gap-2.5 flex group hover:bg-gradient-to-r hover:from-red-600 hover:to-red-800 transition-all duration-300 cursor-pointer">
                         <div
                             class="text-white text-base font-medium font-['Product Sans Medium'] leading-normal tracking-wide">
                             Rute Alternatif
@@ -390,14 +482,17 @@
         <div class="self-stretch justify-start items-center gap-7 inline-flex">
             <div
                 class="w-[291px] h-[267px] px-[42px] bg-white rounded-[18px] flex-col justify-start items-center gap-5 inline-flex">
-                <div class="w-[193px] h-[150px] relative bg-white">
+                <div class="w-[193px] h-[150px] relative bg-white overflow-hidden">
                     <div
-                        class="w-24 h-[142.80px] left-[28px] top-[2.28px] absolute origin-top-left rotate-[-5.55deg] text-black text-8xl font-medium font-['Product Sans Medium'] leading-[144px] tracking-[2.88px]">
-                        📩</div>
+                        class="emoji-email w-24 h-[142.80px] left-[28px] top-[2.28px] absolute origin-top-left rotate-[-5.55deg] text-black text-8xl font-medium font-['Product Sans Medium'] leading-[144px] tracking-[2.88px]">
+                        📩
+                    </div>
                     <div
-                        class="w-16 h-[95.19px] left-[102.79px] top-[54.81px] absolute text-black text-[64px] font-medium font-['Product Sans Medium'] leading-[96px] tracking-widest">
-                        ☎️</div>
+                        class="emoji-phone w-16 h-[95.19px] left-[102.79px] top-[54.81px] absolute text-black text-[64px] font-medium font-['Product Sans Medium'] leading-[96px] tracking-widest">
+                        ☎️
+                    </div>
                 </div>
+
                 <div
                     class="w-[251px] h-[77px] p-2.5 bg-gradient-to-r from-red-500 to-red-700 rounded-xl justify-center items-center gap-2.5 inline-flex group hover:bg-gradient-to-r hover:from-red-600 hover:to-red-800 transition-all duration-300">
                     <div
@@ -409,14 +504,17 @@
             </div>
             <div
                 class="w-[291px] h-[267px] px-[42px] bg-white rounded-[18px] flex-col justify-start items-center gap-5 inline-flex">
-                <div class="w-[193px] h-[150px] relative bg-white">
+                <div class="w-[193px] h-[150px] relative bg-white overflow-hidden">
                     <div
-                        class="left-[33px] top-0 absolute text-black text-[100px] font-medium font-['Product Sans Medium'] leading-[150px] tracking-[3px]">
-                        🙋🏻‍♂️</div>
+                        class="emoji-wave left-[33px] top-0 absolute text-black text-[100px] font-medium font-['Product Sans Medium'] leading-[150px] tracking-[3px]">
+                        🙋🏻‍♂️
+                    </div>
                     <div
-                        class="left-[97.78px] top-[61px] absolute text-black text-[64px] font-medium font-['Product Sans Medium'] leading-[96px] tracking-widest">
-                        🔎</div>
+                        class="emoji-zoom left-[97.78px] top-[61px] absolute text-black text-[64px] font-medium font-['Product Sans Medium'] leading-[96px] tracking-widest">
+                        🔎
+                    </div>
                 </div>
+
                 <div
                     class="w-[251px] h-[77px] p-2.5 bg-gradient-to-r from-red-500 to-red-700 rounded-xl justify-center items-center gap-2.5 inline-flex group hover:bg-gradient-to-r hover:from-red-600 hover:to-red-800 transition-all duration-300">
                     <div
@@ -428,17 +526,21 @@
             </div>
             <div
                 class="w-[291px] h-[267px] px-[42px] bg-white rounded-[18px] flex-col justify-start items-center gap-5 inline-flex">
-                <div class="w-[193px] h-[150px] relative bg-white">
+                <div class="w-[193px] h-[150px] relative bg-white overflow-hidden">
                     <div
-                        class="w-[63.85px] h-[86.38px] left-[129.87px] top-[-7px] absolute origin-top-left rotate-[8deg] text-black text-[64px] font-medium font-['Product Sans Medium'] leading-[96px] tracking-widest">
-                        🚩</div>
+                        class="emoji-flag w-[63.85px] h-[86.38px] left-[129.87px] top-[-7px] absolute origin-top-left rotate-[8deg] text-black text-[64px] font-medium font-['Product Sans Medium'] leading-[96px] tracking-widest">
+                        🚩
+                    </div>
                     <div
-                        class="w-16 h-[86.13px] left-0 top-[60.29px] absolute text-black text-[64px] font-medium font-['Product Sans Medium'] leading-[96px] tracking-widest">
-                        📍</div>
+                        class="emoji-pin w-16 h-[86.13px] left-0 top-[60.29px] absolute text-black text-[64px] font-medium font-['Product Sans Medium'] leading-[96px] tracking-widest">
+                        📍
+                    </div>
                     <div
-                        class="w-24 h-[129.19px] left-[58px] top-[20.81px] absolute text-black text-8xl font-medium font-['Product Sans Medium'] leading-[144px] tracking-[2.88px]">
-                        🏠</div>
+                        class="emoji-house w-24 h-[129.19px] left-[58px] top-[20.81px] absolute text-black text-8xl font-medium font-['Product Sans Medium'] leading-[144px] tracking-[2.88px]">
+                        🏠
+                    </div>
                 </div>
+
                 <div
                     class="w-[251px] h-[77px] p-2.5 bg-gradient-to-r from-red-500 to-red-700 rounded-xl justify-center items-center gap-2.5 inline-flex group hover:bg-gradient-to-r hover:from-red-600 hover:to-red-800 transition-all duration-300">
                     <div
@@ -450,14 +552,17 @@
             </div>
             <div
                 class="w-[291px] h-[267px] px-[42px] bg-white rounded-[18px] flex-col justify-start items-center gap-5 inline-flex">
-                <div class="w-[193px] h-[150px] relative bg-white">
+                <div class="w-[193px] h-[150px] relative bg-white overflow-hidden">
                     <div
-                        class="w-24 h-[157px] left-[33px] top-[4px] absolute text-black text-8xl font-medium font-['Product Sans Medium'] leading-[144px] tracking-[2.88px]">
-                        🚧</div>
+                        class="emoji-construction w-24 h-[157px] left-[33px] top-[4px] absolute text-black text-8xl font-medium font-['Product Sans Medium'] leading-[144px] tracking-[2.88px]">
+                        🚧
+                    </div>
                     <div
-                        class="w-16 h-[104.67px] left-[97px] top-[65px] absolute text-black text-[64px] font-medium font-['Product Sans Medium'] leading-[96px] tracking-widest">
-                        🚘</div>
+                        class="emoji-car w-16 h-[104.67px] left-[97px] top-[65px] absolute text-black text-[64px] font-medium font-['Product Sans Medium'] leading-[96px] tracking-widest">
+                        🚘
+                    </div>
                 </div>
+
                 <div
                     class="w-[251px] h-[77px] p-2.5 bg-gradient-to-r from-red-500 to-red-700 rounded-xl justify-center items-center gap-2.5 inline-flex group hover:bg-gradient-to-r hover:from-red-600 hover:to-red-800 transition-all duration-300">
                     <div
@@ -470,7 +575,7 @@
         </div>
         <div class="self-stretch px-[29px] py-9 bg-white rounded-[18px] justify-center items-start gap-10 inline-flex">
             <div class="w-[556.54px] flex-col justify-start items-center gap-6 inline-flex">
-                <div class="h-[42px] flex-col justify-start items-center gap-3.5 flex">
+                <div class="h-[42px] flex-col justify-start items-center flex">
                     <div
                         class="self-stretch text-[#d8042a] text-2xl font-medium font-['Product Sans Medium'] leading-9 tracking-wide">
                         Statistik Kejadian Bencana per Tahun
@@ -483,18 +588,23 @@
 
                 <!-- Canvas for chart -->
                 <div class="self-stretch justify-start items-center">
-                    <canvas id="bencanaChart"></canvas>
+                    <img src="img/chart.png" id="bencanaChart"></img>
                 </div>
+
+
+
             </div>
 
             <div class="w-[562px] flex-col justify-start items-center gap-[39px] inline-flex">
-                <div class="h-[42px] flex-col justify-start items-center gap-3.5 flex">
+                <div class="h-[42px] flex-col justify-start items-center flex">
                     <div
-                        class="self-stretch text-center text-[#d8042a] text-2xl font-medium font-['Product Sans Medium'] leading-loose tracking-wide">
-                        Data Kejadian Bencana </div>
+                        class="self-stretch text-[#d8042a] text-2xl font-medium font-['Product Sans Medium'] leading-9 tracking-wide">
+                        Data Kejadian Bencana 2024
+                    </div>
                     <div
-                        class="self-stretch text-center text-[#2b2d42] text-base font-normal font-['Product Sans'] leading-snug tracking-wide">
-                        Kota Surabaya 2024 (Hingga saat ini)</div>
+                        class="self-stretch text-center text-[#2b2d42] text-base font-normal font-['Product Sans'] leading-normal tracking-wide">
+                        Kota Surabaya (Hingga Saat Ini)
+                    </div>
                 </div>
                 <div class="self-stretch justify-start items-center gap-[26px] inline-flex">
                     <div class="w-[268px] flex-col justify-start items-start gap-2 inline-flex">
@@ -673,7 +783,7 @@
                             Lebih Lanjut</span></div>
                     <div
                         class="self-stretch text-right text-[#2b2d42] text-base font-normal font-['Product Sans'] leading-normal tracking-wide">
-                        1 jam yang lalu  Andi Saputra</div>
+                        1 jam yang lalu | Andi Saputra</div>
                 </div>
                 <div
                     class="w-[397px] h-[284px] p-6 bg-white rounded-[18px] border border-[#8d99af] flex-col justify-center items-start gap-3 inline-flex">
@@ -689,7 +799,7 @@
                             Lebih Lanjut</span></div>
                     <div
                         class="self-stretch text-right text-[#2b2d42] text-base font-normal font-['Product Sans'] leading-normal tracking-wide">
-                        3 jam yang lalu  Wulan Pratiwi</div>
+                        3 jam yang lalu | Wulan Pratiwi</div>
                 </div>
                 <div
                     class="w-[397px] h-[284px] p-6 bg-white rounded-[18px] border border-[#8d99af] flex-col justify-center items-start gap-3 inline-flex">
@@ -706,13 +816,13 @@
                             Lebih Lanjut</span></div>
                     <div
                         class="self-stretch text-right text-[#2b2d42] text-base font-normal font-['Product Sans'] leading-normal tracking-wide">
-                        1 jam yang lalu  Andi Saputra</div>
+                        1 jam yang lalu | Andi Saputra</div>
                 </div>
             </div>
         </div>
     </div>
     <div
-        class="w-screen h-[386px] py-9 left-0 top-[2438px] absolute bg-gradient-to-r from-red-500 to-red-700 justify-center items-start gap-[96px] inline-flex">
+        class="w-screen h-[300px] py-9 left-0 top-[2438px] absolute bg-gradient-to-r from-red-500 to-red-700 justify-center items-start gap-[96px] inline-flex">
         <div class="w-[485.85px] flex-col justify-start items-start gap-[8px] inline-flex">
             <div class="justify-start items-center gap-[6.72px] inline-flex">
                 <img src="img/logo-satrialight.png" alt="Logo Satria" class="w-[168px] h-[60px]" />
@@ -756,13 +866,19 @@
             </div>
         </div>
 
-        <!-- <div class="text-center"><span
-                class="text-white text-xl font-normal font-['Product Sans'] leading-[30px]">Copyright</span><span
-                class="text-white text-xl font-medium font-['Product Sans Medium'] leading-[30px]"> </span><span
-                class="text-white text-xl font-medium font-['Montserrat'] leading-[30px]">©</span><span
-                class="text-white text-xl font-medium font-['Product Sans Medium'] leading-[30px]"> </span><span
-                class="text-white text-xl font-normal font-['Product Sans'] leading-[30px]">2024 Satria. All Rights
-                Reserved.</span></div> -->
+
+    </div>
+    <div
+        class="w-screen h-[100px] py-9 left-0 top-[2700px] absolute bg-gradient-to-r from-red-500 to-red-700 justify-center items-start gap-[96px] inline-flex">
+        <div class="w-[485.85px] flex-col justify-start items-start gap-[8px] inline-flex">
+            <div class="text-center"><span
+                    class="text-white text-xl font-normal font-['Product Sans'] leading-[30px]">Copyright</span><span
+                    class="text-white text-xl font-medium font-['Product Sans Medium'] leading-[30px]"> </span><span
+                    class="text-white text-xl font-medium font-['Montserrat'] leading-[30px]">©</span><span
+                    class="text-white text-xl font-medium font-['Product Sans Medium'] leading-[30px]"> </span><span
+                    class="text-white text-xl font-normal font-['Product Sans'] leading-[30px]">2024 Satria. All Rights
+                    Reserved.</span></div>
+        </div>
     </div>
 
 </body>

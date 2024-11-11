@@ -8,6 +8,7 @@
     </title>
     <script src="https://cdn.tailwindcss.com">
     </script>
+    <script src="script.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Product+Sans:wght@400;600&display=swap" rel="stylesheet" />
     <style>
@@ -27,38 +28,6 @@
             /* Red border on focus */
         }
     </style>
-    <script>
-        function togglePasswordVisibility() {
-            const passwordInput = document.getElementById('password');
-            const eyeIcon = document.getElementById('eye-icon');
-            if (passwordInput.type === 'password') {
-                passwordInput.type = 'text';
-                eyeIcon.classList.remove('fa-eye-slash');
-                eyeIcon.classList.add('fa-eye');
-            } else {
-                passwordInput.type = 'password';
-                eyeIcon.classList.remove('fa-eye');
-                eyeIcon.classList.add('fa-eye-slash');
-            }
-        }
-
-        function validateForm() {
-            const phoneInput = document.getElementById('phone');
-            const passwordInput = document.getElementById('password');
-            const confirmPasswordInput = document.getElementById('confirm-password');
-            const nameInput = document.getElementById('name');
-            const termsCheckbox = document.getElementById('terms');
-            if (phoneInput.value === '' || passwordInput.value === '' || confirmPasswordInput.value === '' || nameInput.value === '' || !termsCheckbox.checked) {
-                alert('Please fill in all fields and agree to the terms and conditions.');
-                return false;
-            }
-            if (passwordInput.value !== confirmPasswordInput.value) {
-                alert('Passwords do not match.');
-                return false;
-            }
-            return true;
-        }
-    </script>
 </head>
 
 <body class="bg-white flex items-center justify-center min-h-screen">
