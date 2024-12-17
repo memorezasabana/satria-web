@@ -15,6 +15,40 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Product+Sans:wght@400;600&display=swap" rel="stylesheet" />
 
+    <script>
+        if ("geolocation" in navigator) {
+            navigator.geolocation.watchPosition(
+                (position) => {
+                    const latitude = position.coords.latitude;
+                    const longitude = position.coords.longitude;
+
+                    // Menggunakan layanan reverse geocoding untuk mendapatkan alamat
+                    fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}`)
+                        .then(response => response.json())
+                        .then(data => {
+                            // Memproses alamat untuk mengambil kecamatan dan kota
+                            const address = data.address;
+                            const kecamatan = address.suburb || address.village || address.town || '';
+                            const kota = address.city || address.county || address.state_district || '';
+
+                            // Menampilkan kecamatan dan kota
+                            document.getElementById('live-location').textContent = `${kecamatan}, ${kota}`;
+                        })
+                        .catch(error => {
+                            document.getElementById('live-location').textContent = "Gagal mendapatkan alamat.";
+                            console.error("Error fetching address:", error);
+                        });
+                },
+                (error) => {
+                    document.getElementById('live-location').textContent = "Gagal mengambil lokasi.";
+                    console.error("Error getting location:", error);
+                }
+            );
+        } else {
+            document.getElementById('live-location').textContent = "Geolocation tidak didukung oleh browser ini.";
+        }
+    </script>
+
     <style>
         body {
             font-family: 'Product Sans', sans-serif;
@@ -322,9 +356,11 @@
                 Masuk</div>
             <div
                 class="h-14 w-[120px] bg-gradient-to-r from-red-500 to-red-700 rounded-xl justify-center items-center gap-2.5 flex hover:from-red-600 hover:to-red-800 cursor-pointer transition-colors duration-300">
-                <div class="text-white text-2xl font-medium font-['Product Sans Medium'] leading-9 tracking-wide">
+                <div class="text-white text-2xl font-medium font-['Product Sans Medium'] leading-9 tracking-wide cursor-pointer"
+                    onclick="window.location.href='{{ url('/daftar') }}'">
                     Daftar
                 </div>
+
             </div>
 
         </div>
@@ -358,8 +394,11 @@
                     <img src="img/icon-location.png" alt="Icon Location" class="w-6 h-6 absolute left-0 top-0">
                 </div>
 
-                <div class="text-white text-2xl font-normal font-['Product Sans'] leading-9 tracking-wide">
-                    Mulyorejo, Kota Surabaya</div>
+                <div class="text-white text-2xl font-normal font-['Product Sans'] leading-9 tracking-wide"
+                    id="live-location">
+                    Mengambil lokasi...
+                </div>
+
             </div>
         </div>
         <div class="self-stretch justify-start items-center gap-7 inline-flex">

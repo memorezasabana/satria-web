@@ -48,19 +48,6 @@
         }
     </style>
     <script>
-        function togglePasswordVisibility() {
-            const passwordInput = document.getElementById('password');
-            const eyeIcon = document.getElementById('eye-icon');
-            if (passwordInput.type === 'password') {
-                passwordInput.type = 'text';
-                eyeIcon.classList.remove('fa-eye-slash');
-                eyeIcon.classList.add('fa-eye');
-            } else {
-                passwordInput.type = 'password';
-                eyeIcon.classList.remove('fa-eye');
-                eyeIcon.classList.add('fa-eye-slash');
-            }
-        }
 
         function validateForm() {
             const phoneInput = document.getElementById('phone');
@@ -76,6 +63,7 @@
                 alert('Passwords do not match.');
                 return false;
             }
+            window.location.href = '/masuk';
             return true;
         }
     </script>
@@ -138,27 +126,22 @@
                     Kata Sandi
                 </label>
                 <div class="flex items-center border border-gray-300 rounded-lg px-3 py-2 input-border-red">
-                    <i class="fas fa-lock text-red-500 mr-2">
-                    </i>
-                    <input class="w-full outline-none" id="password" placeholder="Masukkan kata sandi" type="text" />
-                    <i class="fas text-gray-400 ml-2 cursor-pointer fa-eye-slash" id="eye-icon"
-                        onclick="togglePasswordVisibility()">
-                    </i>
+                    <i class="fas fa-lock text-red-500 mr-2"></i>
+                    <input class="w-full outline-none" id="password" placeholder="Masukkan kata sandi"
+                        type="password" />
                 </div>
             </div>
             <div class="mb-4">
-                <label class="block text-gray-700 font-bold mb-2" for="password">
+                <label class="block text-gray-700 font-bold mb-2" for="confirm-password">
                     Konfirmasi Kata Sandi
                 </label>
                 <div class="flex items-center border border-gray-300 rounded-lg px-3 py-2 input-border-red">
-                    <i class="fas fa-lock text-red-500 mr-2">
-                    </i>
-                    <input class="w-full outline-none" id="password" placeholder="Masukkan kata sandi" type="text" />
-                    <i class="fas text-gray-400 ml-2 cursor-pointer fa-eye-slash" id="eye-icon"
-                        onclick="togglePasswordVisibility()">
-                    </i>
+                    <i class="fas fa-lock text-red-500 mr-2"></i>
+                    <input class="w-full outline-none" id="confirm-password"
+                        placeholder="Masukkan konfirmasi kata sandi" type="password" />
                 </div>
             </div>
+
             <div class="mb-6 flex items-center">
                 <input class="mr-2 checkbox-custom" id="terms" type="checkbox" />
                 <label class="text-gray-700" for="terms">
@@ -170,7 +153,7 @@
             </button>
             <p class="text-center text-gray-600 mt-2">
                 Sudah punya akun?
-                <a class="text-red-500" href="#">
+                <a class="text-red-500" href="{{ url('/masuk') }}">
                     Masuk
                 </a>
             </p>

@@ -155,7 +155,7 @@
             </div>
             <div class="py-2.5 rounded-xl justify-center items-center gap-2.5 flex">
                 <div class="text-[#d8042a] text-2xl font-medium font-['Product Sans Medium'] leading-9 tracking-wide">
-                    Username</div>
+                    Wijaya Reza</div>
             </div>
         </div>
     </div>

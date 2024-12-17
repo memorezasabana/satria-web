@@ -125,9 +125,9 @@
     </div>
     <div
         class="w-[1248px] h-[110px] px-[42px] top-0 absolute bg-white rounded-bl-3xl rounded-br-3xl justify-center items-center gap-24 inline-flex">
-        <div class="justify-start items-center gap-[6.72px] inline-flex">
-            <img src="img/logo-satria.png" alt="Logo Satria" class="w-[168px] h-[60px]" />
-        </div>
+        <a href="{{ url('/') }}">
+            <img class="w-[167.50px] h-[60px]" src="img/logo-satria.png" alt="Logo SATRIA" />
+        </a>
         <div class="justify-start items-center gap-14 flex">
             <div class="text-[#2b2d42] text-2xl font-medium font-['Product Sans Medium'] leading-9 tracking-wide">
                 Beranda</div>
@@ -155,7 +155,7 @@
             </div>
             <div class="py-2.5 rounded-xl justify-center items-center gap-2.5 flex">
                 <div class="text-[#d8042a] text-2xl font-medium font-['Product Sans Medium'] leading-9 tracking-wide">
-                    Username</div>
+                    Wijaya Reza</div>
             </div>
         </div>
     </div>

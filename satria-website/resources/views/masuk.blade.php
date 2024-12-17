@@ -1,33 +1,31 @@
 <html lang="en">
+<meta charset="utf-8" />
+<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+<title>
+    Satria
+</title>
+<script src="https://cdn.tailwindcss.com">
+</script>
+<script src="script.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Product+Sans:wght@400;600&display=swap" rel="stylesheet" />
+<style>
+    body {
+        font-family: 'Product Sans', sans-serif;
+        letter-spacing: 0.03em;
+        /* 3% letter spacing */
+    }
 
-<head>
-    <meta charset="utf-8" />
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>
-        Satria
-    </title>
-    <script src="https://cdn.tailwindcss.com">
-    </script>
-    <script src="script.js"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Product+Sans:wght@400;600&display=swap" rel="stylesheet" />
-    <style>
-        body {
-            font-family: 'Product Sans', sans-serif;
-            letter-spacing: 0.03em;
-            /* 3% letter spacing */
-        }
+    .btn-hover:hover {
+        background-color: #e3342f;
+        /* Darker red */
+    }
 
-        .btn-hover:hover {
-            background-color: #e3342f;
-            /* Darker red */
-        }
-
-        .input-border-red:focus-within {
-            border-color: #e3342f;
-            /* Red border on focus */
-        }
-    </style>
+    .input-border-red:focus-within {
+        border-color: #e3342f;
+        /* Red border on focus */
+    }
+</style>
 </head>
 
 <body class="bg-white flex items-center justify-center min-h-screen">
@@ -77,20 +75,18 @@
                     Kata Sandi
                 </label>
                 <div class="flex items-center border border-gray-300 rounded-lg px-3 py-2 input-border-red">
-                    <i class="fas fa-lock text-red-500 mr-2">
-                    </i>
-                    <input class="w-full outline-none" id="password" placeholder="Masukkan kata sandi" type="text" />
-                    <i class="fas text-gray-400 ml-2 cursor-pointer fa-eye-slash" id="eye-icon"
-                        onclick="togglePasswordVisibility()">
-                    </i>
+                    <i class="fas fa-lock text-red-500 mr-2"></i>
+                    <input class="w-full outline-none" id="password" placeholder="Masukkan kata sandi"
+                        type="password" />
                 </div>
             </div>
-            <button class="w-full py-2 bg-red-500 text-white rounded-lg btn-hover" onclick="return validateForm()">
+            <button class="w-full py-2 bg-red-500 text-white rounded-lg btn-hover"
+                onclick="window.location.href='{{ url('/') }}'">
                 Masuk
             </button>
             <p class="text-center text-gray-600 mt-2">
                 Belum punya akun?
-                <a class="text-red-500" href="#">
+                <a class="text-red-500" href="{{ url('/daftar') }}">
                     Daftar
                 </a>
             </p>
